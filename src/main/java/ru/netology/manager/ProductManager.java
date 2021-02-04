@@ -7,10 +7,11 @@ import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 @AllArgsConstructor
-public class ProductManager {
+public class ProductManager{
     private ProductRepository repository;
 
     public void add(Product item) {
+
         repository.save(item);
     }
 
