@@ -26,4 +26,21 @@ class ProductRepositoryTest {
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    void shouldSaveSomeItems() {
+        repository.save(item1);
+        repository.save(item2);
+        repository.save(item8);
+        Product[] expected = new Product[]{item1, item2, item8};
+        Product[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldEmptyBasket() {
+        Product[] expected = new Product[]{};
+        Product[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+    }
 }
