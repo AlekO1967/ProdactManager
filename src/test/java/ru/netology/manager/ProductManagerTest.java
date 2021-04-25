@@ -9,6 +9,7 @@ import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+
 class ProductManagerTest {
     private ProductRepository repository = new ProductRepository();
     ProductManager manager = new ProductManager(repository);
@@ -74,6 +75,16 @@ class ProductManagerTest {
     void shouldSearchBySmartphoneNotValidManufacturer() {
         Product[] expected = new Product[]{};
         Product[] actual = manager.searchBy("Sony");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchBySomeItems() {
+        manager.add(item1);
+        manager.add(item2);
+        Product[] expected = new Product[]{item1, item2};
+        Product[] actual = manager.searchBy("В. Пикуль");
+        //Product[] actual = manager.searchBy("");
         assertArrayEquals(expected, actual);
     }
 
