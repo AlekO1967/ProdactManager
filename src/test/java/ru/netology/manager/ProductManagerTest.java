@@ -7,14 +7,17 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class ProductManagerTest {
     private ProductRepository repository = new ProductRepository();
     ProductManager manager = new ProductManager(repository);
     Book item1 = new Book(1, "Баязет", 200, "В. Пикуль");
-    Book item2 = new Book(2, "Евгений Онегин", 400, "А. С. Пушкин");
+    Book item2 = new Book(2, "Моонзунд", 200, "В. Пикуль");
     Book item3 = new Book(3, "100 миниатюр", 500, "М. Жванецкий");
     Book item4 = new Book(4, "Airport", 690, "Arthur Hailey");
     Smartphone item5 = new Smartphone(5, "Galaxy S20", 35000, "Samsung");
@@ -45,8 +48,8 @@ class ProductManagerTest {
 
     @Test
     void searchByBookAuthor() {
-        Product[] expected = new Product[]{item2};
-        Product[] actual = manager.searchBy("А. С. Пушкин");
+        Product[] expected = new Product[]{item3};
+        Product[] actual = manager.searchBy("М. Жванецкий");
         assertArrayEquals(expected, actual);
     }
 
@@ -79,13 +82,11 @@ class ProductManagerTest {
     }
 
     @Test
-    void shouldSearchBySomeItems() {
+    void shouldSearchByAddSomeItems() {
         manager.add(item1);
         manager.add(item2);
         Product[] expected = new Product[]{item1, item2};
         Product[] actual = manager.searchBy("В. Пикуль");
-        //Product[] actual = manager.searchBy("");
         assertArrayEquals(expected, actual);
     }
-
 }
