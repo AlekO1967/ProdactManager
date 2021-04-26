@@ -83,8 +83,6 @@ class ProductManagerTest {
 
     @Test
     void shouldSearchByAddSomeItems() {
-        manager.add(item1);
-        manager.add(item2);
         Product[] expected = new Product[]{item1, item2};
         Product[] actual = manager.searchBy("В. Пикуль");
         assertArrayEquals(expected, actual);
